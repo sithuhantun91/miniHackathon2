@@ -32,7 +32,9 @@ public class TeacherDAOImpl implements TeacherDAO {
             query2.setParameter("teacherId", teacher.getTeacherId());
             TypedQuery<Department> query3 = session.createQuery("SELECT d FROM Department d WHERE d.deptId = :deptId", Department.class);
             query3.setParameter("deptId", query2.getSingleResult());
-            teacher.setDepartment(query3.getSingleResult());
+            if(query3.getResultList().size() > 0){
+                teacher.setDepartment(query3.getSingleResult());
+            }
         }
         return teacherList;
     }

@@ -56,12 +56,11 @@ public class Teacher implements Serializable {
     @Override
     public String toString() {
         String result = "Teacher{" + "teacherId=" + teacherId + ", teacherName='" + teacherName + '\'' + ", department= ";
-//        if (department != null) {
-//            result += department.getDeptName();
-//        }else{
-//            result += "null";
-//        }
-        result += department.getDeptName();
+        if (department != null) {
+            result += department.getDeptName();
+        }else{
+            result += "null";
+        }
         result += '}';
         return result;
     }

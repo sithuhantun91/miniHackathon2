@@ -84,11 +84,13 @@ public class manyToOneInteractive {
                     System.out.println("\nEnter department's name to add: ");
                     Department newDepartment = new Department(scanner.next());
                     departmentDAO.addDepartment(newDepartment, session);
+                    listDepts(session);
                     break;
                 case 2:
                     System.out.println("\nEnter department's Id to delete: ");
                     int deptId = scanner.nextInt();
                     departmentDAO.deleteDepartment(deptId, session);
+                    listDepts(session);
                     break;
                 case 3:
                     Department updateDepartment = new Department();
@@ -97,6 +99,7 @@ public class manyToOneInteractive {
                     System.out.println("\nEnter department's name to update: ");
                     updateDepartment.setDeptName(scanner.next());
                     departmentDAO.updateDepartment(updateDepartment, session);
+                    listDepts(session);
                     break;
                 case 4:
                     System.out.println("Go back to menu...");
@@ -133,6 +136,7 @@ public class manyToOneInteractive {
                     System.out.println("\nEnter teacher's Id to delete: ");
                     int teacherId = scanner.nextInt();
                     teacherDAO.deleteTeacher(teacherId, session);
+                    listTeachers(session);
                     break;
                 case 3:
                     Teacher updateTeacher = new Teacher();
@@ -141,6 +145,7 @@ public class manyToOneInteractive {
                     System.out.println("\nEnter teacher's name to update: ");
                     updateTeacher.setTeacherName(scanner.next());
                     teacherDAO.updateTeacher(updateTeacher, session);
+                    listTeachers(session);
                     break;
                 case 4:
                     System.out.println("Go back to menu...");
@@ -184,6 +189,9 @@ public class manyToOneInteractive {
         }
 
         teacherDAO.updateTeacher(teacher, session);
+
+        listDepts(session);
+        listTeachers(session);
 
         transaction.commit();
         session.close();
